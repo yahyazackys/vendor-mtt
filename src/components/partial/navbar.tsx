@@ -73,9 +73,11 @@ export default function Navbar() {
             {/* Enhanced Logo */}
             <Link href="/" className="group flex items-center flex-shrink-0">
               <div className="relative">
-                <img
+                <Image
                   src="/images/logo-mtt.png"
                   alt="Mitra Tour & Travel"
+                  width={112}
+                  height={40}
                   className="w-28 h-10 sm:w-36 sm:h-12 object-contain group-hover:scale-105 transition-all duration-300"
                 />
               </div>
