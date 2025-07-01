@@ -6,7 +6,6 @@ import {
   FileText,
   Rocket,
   ArrowRight,
-  CheckCircle,
 } from "lucide-react";
 
 const partnershipSteps = [

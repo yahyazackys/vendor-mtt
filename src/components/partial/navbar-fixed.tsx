@@ -10,20 +10,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import {
-  Instagram,
-  Facebook,
-  Mail,
-  Menu,
-  X,
-  Home,
-  User,
-  BookText,
-  HelpCircle,
-  LogIn,
-  Phone,
-  MapPin,
-} from "lucide-react";
+import { Menu, Home, User, BookText, HelpCircle, LogIn } from "lucide-react";
 import Image from "next/image";
 
 export default function Navbar() {
