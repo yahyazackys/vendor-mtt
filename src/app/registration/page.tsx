@@ -10,7 +10,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { FormProvider } from "react-hook-form";
 import { useRouter } from "next/navigation";
-import { ArrowLeft, Mail, User, Phone, Lock, Loader2 } from "lucide-react";
+import { ArrowLeft, Loader2 } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 import {
@@ -92,9 +92,11 @@ export default function RegistrationPage() {
       console.log("Berhasil daftar:", result);
 
       router.push("/");
-    } catch (error: any) {
-      setErrorMessage(error.message || "Terjadi kesalahan");
-      setShowErrorModal(true);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        setErrorMessage(error.message || "Terjadi kesalahan");
+        setShowErrorModal(true);
+      }
     } finally {
       setLoading(false);
     }

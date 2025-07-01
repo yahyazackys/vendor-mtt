@@ -58,7 +58,7 @@ export default function StepsSection() {
         <div className="hidden lg:block">
           {/* Step Cards */}
           <div className="grid grid-cols-4 gap-8">
-            {partnershipSteps.map((step, index) => {
+            {partnershipSteps.map((step) => {
               const IconComponent = step.icon;
               return (
                 <div key={step.step} className={`group relative `}>
