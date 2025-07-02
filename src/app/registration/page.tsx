@@ -22,7 +22,6 @@ import {
   AlertDialogFooter,
 } from "@/components/ui/alert-dialog";
 import { Controller } from "react-hook-form";
-import { motion } from "framer-motion";
 
 const formSchema = z
   .object({
