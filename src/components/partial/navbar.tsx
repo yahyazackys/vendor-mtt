@@ -39,7 +39,7 @@ export default function Navbar() {
   }, []);
 
   const navigationItems = [
-    { href: "/#hero", label: "Beranda", icon: Home },
+    { href: "/", label: "Beranda", icon: Home },
     { href: "/#benefit", label: "Keuntungan", icon: User },
     { href: "/#guide", label: "Panduan Mitra", icon: BookText },
     { href: "/#faq", label: "FAQ", icon: HelpCircle },
@@ -55,7 +55,7 @@ export default function Navbar() {
             : "bg-white/90 backdrop-blur-lg border-b border-blue-100"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto max-xl:px-4">
           <div className="flex justify-between items-center h-16 sm:h-20">
             {/* Enhanced Logo */}
             <Link href="/" className="group flex items-center flex-shrink-0">

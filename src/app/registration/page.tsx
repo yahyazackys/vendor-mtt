@@ -22,6 +22,7 @@ import {
   AlertDialogFooter,
 } from "@/components/ui/alert-dialog";
 import { Controller } from "react-hook-form";
+import { motion } from "framer-motion";
 
 const formSchema = z
   .object({
@@ -46,6 +47,44 @@ export default function RegistrationPage() {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [showErrorModal, setShowErrorModal] = useState(false);
+
+  const formFields = [
+    {
+      id: "email",
+      label: "Email",
+      type: "email",
+      placeholder: " ",
+      validation: "email",
+    },
+    {
+      id: "namaPIC",
+      label: "Nama PIC",
+      type: "text",
+      placeholder: " ",
+      validation: "namaPIC",
+    },
+    {
+      id: "noHP",
+      label: "No. HP",
+      type: "text",
+      placeholder: " ",
+      validation: "noHP",
+    },
+    {
+      id: "password",
+      label: "Password",
+      type: "password",
+      placeholder: " ",
+      validation: "password",
+    },
+    {
+      id: "confirmPassword",
+      label: "Konfirmasi Password",
+      type: "password",
+      placeholder: " ",
+      validation: "confirmPassword",
+    },
+  ];
 
   const methods = useForm<FormData>({
     resolver: zodResolver(formSchema),
@@ -160,128 +199,34 @@ export default function RegistrationPage() {
               </div>
 
               <div className="space-y-6">
-                {/* Email Field */}
-                <div className="group">
-                  <div className="relative">
-                    <Input
-                      id="email"
-                      {...register("email")}
-                      placeholder=" "
-                      type="email"
-                      className="pl-4 pt-6 pb-2 border-gray-200 text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:bg-white rounded-lg h-14 transition-all duration-300 peer"
-                    />
-                    <Label
-                      htmlFor="email"
-                      className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 transition-all duration-300 pointer-events-none peer-focus:top-4 peer-focus:text-xs peer-focus:text-blue-500 peer-[:not(:placeholder-shown)]:top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:text-gray-600"
-                    >
-                      Email
-                    </Label>
+                {formFields.map((field) => (
+                  <div key={field.id} className="group">
+                    <div className="relative">
+                      <Input
+                        id={field.id}
+                        type={field.type}
+                        placeholder={field.placeholder}
+                        {...register(field.validation as keyof FormData)}
+                        className="pl-4 pt-6 pb-2 border-gray-200 text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:bg-white rounded-lg h-14 transition-all duration-300 peer"
+                      />
+                      <Label
+                        htmlFor={field.id}
+                        className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 transition-all duration-300 pointer-events-none peer-focus:top-4 peer-focus:text-xs peer-focus:text-blue-500 peer-[:not(:placeholder-shown)]:top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:text-gray-600"
+                      >
+                        {field.label}
+                      </Label>
+                    </div>
+                    {errors[field.validation as keyof FormData] && (
+                      <p className="text-red-500 text-sm mt-2 flex items-center">
+                        <span className="w-1 h-1 bg-red-500 rounded-full mr-2" />
+                        {
+                          errors[field.validation as keyof FormData]
+                            ?.message as string
+                        }
+                      </p>
+                    )}
                   </div>
-                  {errors.email && (
-                    <p className="text-red-500 text-sm mt-2 flex items-center">
-                      <span className="w-1 h-1 bg-red-500 rounded-full mr-2"></span>
-                      {errors.email.message}
-                    </p>
-                  )}
-                </div>
-
-                {/* Nama PIC Field */}
-                <div className="group">
-                  <div className="relative">
-                    <Input
-                      id="namaPIC"
-                      {...register("namaPIC")}
-                      placeholder=" "
-                      className="pl-4 pt-6 pb-2 border-gray-200 text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:bg-white rounded-lg h-14 transition-all duration-300 peer"
-                    />
-                    <Label
-                      htmlFor="namaPIC"
-                      className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 transition-all duration-300 pointer-events-none peer-focus:top-4 peer-focus:text-xs peer-focus:text-blue-500 peer-[:not(:placeholder-shown)]:top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:text-gray-600"
-                    >
-                      Nama PIC
-                    </Label>
-                  </div>
-                  {errors.namaPIC && (
-                    <p className="text-red-500 text-sm mt-2 flex items-center">
-                      <span className="w-1 h-1 bg-red-500 rounded-full mr-2"></span>
-                      {errors.namaPIC.message}
-                    </p>
-                  )}
-                </div>
-
-                {/* No HP Field */}
-                <div className="group">
-                  <div className="relative">
-                    <Input
-                      id="noHP"
-                      {...register("noHP")}
-                      placeholder=" "
-                      className="pl-4 pt-6 pb-2 border-gray-200 text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:bg-white rounded-lg h-14 transition-all duration-300 peer"
-                    />
-                    <Label
-                      htmlFor="noHP"
-                      className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 transition-all duration-300 pointer-events-none peer-focus:top-4 peer-focus:text-xs peer-focus:text-blue-500 peer-[:not(:placeholder-shown)]:top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:text-gray-600"
-                    >
-                      No. HP
-                    </Label>
-                  </div>
-                  {errors.noHP && (
-                    <p className="text-red-500 text-sm mt-2 flex items-center">
-                      <span className="w-1 h-1 bg-red-500 rounded-full mr-2"></span>
-                      {errors.noHP.message}
-                    </p>
-                  )}
-                </div>
-
-                {/* Password Field */}
-                <div className="group">
-                  <div className="relative">
-                    <Input
-                      id="password"
-                      {...register("password")}
-                      placeholder=" "
-                      type="password"
-                      className="pl-4 pt-6 pb-2 border-gray-200 text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:bg-white rounded-lg h-14 transition-all duration-300 peer"
-                    />
-                    <Label
-                      htmlFor="password"
-                      className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 transition-all duration-300 pointer-events-none peer-focus:top-4 peer-focus:text-xs peer-focus:text-blue-500 peer-[:not(:placeholder-shown)]:top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:text-gray-600"
-                    >
-                      Password
-                    </Label>
-                  </div>
-                  {errors.password && (
-                    <p className="text-red-500 text-sm mt-2 flex items-center">
-                      <span className="w-1 h-1 bg-red-500 rounded-full mr-2"></span>
-                      {errors.password.message}
-                    </p>
-                  )}
-                </div>
-
-                {/* Confirm Password Field */}
-                <div className="group">
-                  <div className="relative">
-                    <Input
-                      id="confirmPassword"
-                      {...register("confirmPassword")}
-                      placeholder=" "
-                      type="password"
-                      className="pl-4 pt-6 pb-2 border-gray-200 text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:bg-white rounded-lg h-14 transition-all duration-300 peer"
-                    />
-                    <Label
-                      htmlFor="confirmPassword"
-                      className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 transition-all duration-300 pointer-events-none peer-focus:top-4 peer-focus:text-xs peer-focus:text-blue-500 peer-[:not(:placeholder-shown)]:top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:text-gray-600"
-                    >
-                      Konfirmasi Password
-                    </Label>
-                  </div>
-                  {errors.confirmPassword && (
-                    <p className="text-red-500 text-sm mt-2 flex items-center">
-                      <span className="w-1 h-1 bg-red-500 rounded-full mr-2"></span>
-                      {errors.confirmPassword.message}
-                    </p>
-                  )}
-                </div>
+                ))}
 
                 {/* Agreement Checkbox */}
                 <Controller

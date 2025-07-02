@@ -4,6 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { motion } from "framer-motion";
 
 const accordionData = [
   {
@@ -44,23 +45,36 @@ export function AccordionSection() {
   return (
     <section id="faq" className="py-8 md:py-16 bg-white max-xl:px-4">
       <div className="max-w-7xl mx-auto text-start space-y-8">
-        <div>
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.8 }}
+        >
           <h2 className="text-3xl font-semibold text-black">Pertanyaan Umum</h2>
           <div className="w-24 h-1 bg-primary mt-3 rounded-full" />
-        </div>
+        </motion.div>
 
         <Accordion type="single" collapsible className="w-full">
-          {accordionData.map((item) => (
-            <AccordionItem key={item.value} value={item.value}>
-              <AccordionTrigger className="hover:no-underline text-md md:text-lg font-reguler text-left">
-                {item.title}
-              </AccordionTrigger>
-              <AccordionContent className="flex flex-col text-balance text-sm text-gray-600 space-y-2">
-                {item.content.map((paragraph, i) => (
-                  <p key={i}>{paragraph}</p>
-                ))}
-              </AccordionContent>
-            </AccordionItem>
+          {accordionData.map((item, index) => (
+            <motion.div
+              key={item.value}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5, delay: index * 0.2 }}
+            >
+              <AccordionItem value={item.value}>
+                <AccordionTrigger className="hover:no-underline text-[#002e5b] text-md md:text-lg font-reguler text-left">
+                  {item.title}
+                </AccordionTrigger>
+                <AccordionContent className="flex flex-col text-balance text-sm text-gray-600 space-y-2">
+                  {item.content.map((paragraph, i) => (
+                    <p key={i}>{paragraph}</p>
+                  ))}
+                </AccordionContent>
+              </AccordionItem>
+            </motion.div>
           ))}
         </Accordion>
       </div>

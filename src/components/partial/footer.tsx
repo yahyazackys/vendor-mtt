@@ -3,12 +3,19 @@
 import Link from "next/link";
 import { Instagram, Facebook, Mail, Phone, MapPin } from "lucide-react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function Footer() {
   return (
     <footer className="bg-[#002e5b] text-white relative overflow-hidden">
       {/* Konten Utama Footer */}
-      <div className="relative max-w-7xl mx-auto max-xl:px-4 py-16">
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.8 }}
+        className="relative max-w-7xl mx-auto max-xl:px-4 py-16"
+      >
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Logo & Deskripsi */}
           <div className="lg:col-span-1 space-y-6">
@@ -122,7 +129,7 @@ export default function Footer() {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Footer Bawah */}
       <div className="relative border-t border-blue-800/50">
