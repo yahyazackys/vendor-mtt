@@ -108,18 +108,24 @@ export default function RegistrationPage() {
     setLoading(true);
 
     try {
-      const response = await fetch("https://api.example.com/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: data.email,
-          namaPIC: data.namaPIC,
-          noHP: data.noHP,
-          password: data.password,
-        }),
-      });
+      const response = await fetch(
+        "https://panel.mitratourpartner.my.id/api/auth/register/vendor",
+
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: data.email,
+            pic_name: data.namaPIC,
+            phone: data.noHP,
+            password: data.password,
+            password_confirmation: data.confirmPassword,
+            terms_agreed: data.agree,
+          }),
+        }
+      );
 
       if (!response.ok) {
         const error = await response.json();
@@ -129,7 +135,7 @@ export default function RegistrationPage() {
       const result = await response.json();
       console.log("Berhasil daftar:", result);
 
-      router.push("/");
+      router.push("/registration/success");
     } catch (error: unknown) {
       if (error instanceof Error) {
         setErrorMessage(error.message || "Terjadi kesalahan");

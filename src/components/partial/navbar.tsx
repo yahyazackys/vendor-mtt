@@ -85,7 +85,7 @@ export default function Navbar() {
               ))}
               <div className="ml-4 pl-4 border-l border-gray-200 flex gap-2">
                 <Link
-                  href="/login"
+                  href="https://panel.mitratourpartner.my.id/login"
                   className="bg-secondary hover:bg-blue-100 text-primary px-6 py-2 rounded-lg font-semibold text-sm transition-all duration-300"
                 >
                   <span className="relative z-10">Masuk</span>
@@ -104,7 +104,7 @@ export default function Navbar() {
               {/* Mobile Auth Buttons - Hidden on very small screens */}
               <div className="hidden sm:flex items-center gap-2">
                 <Link
-                  href="/login"
+                  href="https://panel.mitratourpartner.my.id/login"
                   className="bg-secondary hover:bg-blue-100 text-primary px-3 py-1.5 rounded-lg font-medium text-xs transition-all duration-300"
                 >
                   Masuk
@@ -170,7 +170,7 @@ export default function Navbar() {
                     {/* Mobile Auth Section */}
                     <div className="mt-2 pt-6 border-t border-gray-100 space-y-3">
                       <Link
-                        href="/login"
+                        href="https://panel.mitratourpartner.my.id/login"
                         onClick={() => setOpenSidebar(false)}
                         className="group flex items-center gap-3 p-4 rounded-xl bg-violet-50 transition-all duration-300 text-gray-700 hover:text-primary"
                       >
