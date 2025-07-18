@@ -58,6 +58,7 @@ export default function StepsSection() {
           <h2 className="text-3xl font-semibold text-black">
             Langkah Mudah Menjadi Mitra Kami
           </h2>
+
           <div className="w-24 h-1 bg-primary mt-3 rounded-full" />
         </motion.div>
 

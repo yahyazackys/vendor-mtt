@@ -40,8 +40,8 @@ export default function Navbar() {
 
   const navigationItems = [
     { href: "/", label: "Beranda", icon: Home },
-    { href: "/#benefit", label: "Keuntungan", icon: User },
-    { href: "/#guide", label: "Panduan Mitra", icon: BookText },
+    { href: "/#about", label: "Tentang", icon: User },
+    { href: "/#services", label: "Layanan", icon: BookText },
     { href: "/#faq", label: "FAQ", icon: HelpCircle },
   ];
 
@@ -61,11 +61,11 @@ export default function Navbar() {
             <Link href="/" className="group flex items-center flex-shrink-0">
               <div className="relative">
                 <Image
-                  src="/images/logo-mtt.png"
+                  src="/logo-primary.png"
                   alt="Mitra Tour & Travel"
                   width={112}
                   height={40}
-                  className="w-28 h-10 sm:w-36 sm:h-12 object-contain group-hover:scale-105 transition-all duration-300"
+                  className="w-36 h-12 sm:w-44 sm:h-20 object-contain group-hover:scale-105 transition-all duration-300"
                 />
               </div>
             </Link>
@@ -85,16 +85,10 @@ export default function Navbar() {
               ))}
               <div className="ml-4 pl-4 border-l border-gray-200 flex gap-2">
                 <Link
-                  href="https://panel.mitratourpartner.my.id/login"
-                  className="bg-secondary hover:bg-blue-100 text-primary px-6 py-2 rounded-lg font-semibold text-sm transition-all duration-300"
-                >
-                  <span className="relative z-10">Masuk</span>
-                </Link>
-                <Link
                   href="/registration"
                   className="bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-lg font-semibold text-sm transition-all duration-300"
                 >
-                  <span className="relative z-10">Daftar</span>
+                  <span className="relative z-10">Hubungi Kami</span>
                 </Link>
               </div>
             </nav>
@@ -104,16 +98,10 @@ export default function Navbar() {
               {/* Mobile Auth Buttons - Hidden on very small screens */}
               <div className="hidden sm:flex items-center gap-2">
                 <Link
-                  href="https://panel.mitratourpartner.my.id/login"
-                  className="bg-secondary hover:bg-blue-100 text-primary px-3 py-1.5 rounded-lg font-medium text-xs transition-all duration-300"
-                >
-                  Masuk
-                </Link>
-                <Link
                   href="/registration"
-                  className="bg-primary hover:bg-primary/90 text-white px-3 py-1.5 rounded-lg font-medium text-xs transition-all duration-300"
+                  className="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium text-xs transition-all duration-300"
                 >
-                  Daftar
+                  Hubungi Kami
                 </Link>
               </div>
 
@@ -129,7 +117,7 @@ export default function Navbar() {
                   </Button>
                 </SheetTrigger>
                 <SheetContent
-                  side="right"
+                  side="left"
                   className="w-full px-4 max-w-xs bg-white/98 backdrop-blur-xl border-l border-gray-200"
                 >
                   <SheetHeader className="pb-6 border-b border-gray-100">
@@ -140,10 +128,10 @@ export default function Navbar() {
                         onClick={() => setOpenSidebar(false)}
                       >
                         <Image
-                          src="/images/logo-mtt.png"
+                          src="/logo-primary.png"
                           alt="Mitra Tour & Travel"
-                          width={128}
-                          height={40}
+                          width={140}
+                          height={60}
                           className="object-contain"
                           loading="lazy"
                         />
@@ -170,23 +158,11 @@ export default function Navbar() {
                     {/* Mobile Auth Section */}
                     <div className="mt-2 pt-6 border-t border-gray-100 space-y-3">
                       <Link
-                        href="https://panel.mitratourpartner.my.id/login"
-                        onClick={() => setOpenSidebar(false)}
-                        className="group flex items-center gap-3 p-4 rounded-xl bg-violet-50 transition-all duration-300 text-gray-700 hover:text-primary"
-                      >
-                        <div className="p-2 rounded-lg bg-gray-100 group-hover:bg-blue-100 transition-all duration-300">
-                          <LogIn className="w-4 h-4" />
-                        </div>
-                        <span className="font-medium">Masuk</span>
-                      </Link>
-
-                      <Link
-                        href="/registration"
+                        href="htt"
                         onClick={() => setOpenSidebar(false)}
                         className="flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white p-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
                       >
-                        <User className="w-4 h-4" />
-                        Daftar Sebagai Mitra
+                        Hubungi Kami
                       </Link>
                     </div>
                   </nav>
